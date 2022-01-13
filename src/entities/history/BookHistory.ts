@@ -6,7 +6,7 @@ import {Book} from "../Book";
 export class BookHistory extends BaseEntity implements HistoryEntityInterface<Omit<Book, "pages">> {
 
     @PrimaryGeneratedColumn()
-   public id: string;
+    public id: string;
 
     @Column()
     public author: string;
