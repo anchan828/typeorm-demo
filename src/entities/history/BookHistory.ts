@@ -3,7 +3,7 @@ import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 import {Book} from "../Book";
 
 @Entity()
-export class BookHistory extends BaseEntity implements Omit<Book,  keyof BaseEntity | "pages">, HistoryEntityInterface {
+export class BookHistory extends BaseEntity implements HistoryEntityInterface<Omit<Book, "pages">> {
 
     @PrimaryGeneratedColumn()
    public id: string;
