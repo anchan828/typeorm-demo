@@ -15,29 +15,4 @@ export class PageHistorySubscriber extends HistoryEntitySubscriber<
   public get historyEntity() {
     return PageHistory;
   }
-
-  beforeInsertHistory(
-    history: PageHistory,
-    entity: Readonly<Page>
-  ): PageHistory {
-    history.bookId = entity.book.id;
-    return history;
-  }
-
-  beforeUpdateHistory(
-    history: PageHistory,
-    entity: Readonly<Page>
-  ): PageHistory {
-    history.bookId = entity.book.id;
-    return history;
-  }
-
-  beforeRemoveHistory(
-    history: PageHistory,
-    entity: Readonly<Page>
-  ): PageHistory {
-    history.bookId = entity.book.id;
-    return history;
-  }
-
 }
