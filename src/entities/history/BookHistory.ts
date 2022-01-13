@@ -1,12 +1,21 @@
 import {HistoryActionColumn, HistoryActionType, HistoryEntityInterface} from "@anchan828/typeorm-history";
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 import {Book} from "../Book";
 
 @Entity()
-export class BookHistory extends Book implements HistoryEntityInterface {
+export class BookHistory extends BaseEntity implements Omit<Book,  keyof BaseEntity | "pages">, HistoryEntityInterface {
 
     @PrimaryGeneratedColumn()
-    id: string;
+   public id: string;
+
+    @Column()
+    public author: string;
+
+    @Column()
+    public name: string;
+
+    @Column()
+    public technical_index: number;
 
     @Column()
     public originalID!: string;
