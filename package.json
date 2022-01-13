@@ -4,8 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start:withouthistory": "export HISTORY=false && ts-node src/process.ts",
-        "start:withhistory": "ts-node src/process.ts"
+        "start:withouthistory": "export HISTORY=false && ./node_modules/ts-node/dist/bin.js src/process.ts",
+        "start:withhistory": "./node_modules/ts-node/dist/bin.js src/process.ts"
     },
     "author": "",
     "license": "ISC",
