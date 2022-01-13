@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run database
+        run: docker-compose up -d
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: npm
+      - name: Install npm packages
+        run: npm i
+      - name: Setup
+        run: |
+          ./node_modules/ts-node/dist/bin.js ./node_modules/typeorm/cli.js -f src/connection.ts migration:run
+          ./node_modules/typescript/bin/tsc
+      - name: npm run start:withouthistory
+        run: npm run start:withouthistory
+      - name: npm run start:withhistory
+        run: npm run start:withhistory
