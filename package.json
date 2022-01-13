@@ -1,0 +1,23 @@
+{
+    "name": "typeorm-demo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start:withouthistory": "export HISTORY=false && ts-node src/process.ts",
+        "start:withhistory": "ts-node src/process.ts"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@anchan828/typeorm-history": "^0.4.22",
+        "express": "^4.17.1",
+        "mysql": "^2.18.1",
+        "typeorm": "0.2.32"
+    },
+    "devDependencies": {
+        "@types/node": "^17.0.8",
+        "ts-node": "3.3.0",
+        "typescript": "3.7.2"
+    }
+}

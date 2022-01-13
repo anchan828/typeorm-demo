@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata":true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "pretty": true,
+    "sourceMap": false,
+    "target": "es6",
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "allowJs": true,
+    "typeRoots": [
+      "@types",
+      "./node_modules/@types",
+      "./src/helpers/pagination"
+    ]
+    // "noImplicitAny": true,
+    // "strictNullChecks": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/tests/*",
+    "src/samples/*"
+  ]
+}
