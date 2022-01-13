@@ -27,6 +27,37 @@ There are 2 options : the first one without history mode, the second one with hi
 npm run start:withouthistory
 ```
 
+```sql
+query: START TRANSACTION
+query: INSERT INTO `book`(`id`, `author`, `name`, `technical_index`) VALUES (DEFAULT, ?, ?, ?) -- PARAMETERS: ["author-0","name-0",0]
+query: INSERT INTO `book`(`id`, `author`, `name`, `technical_index`) VALUES (DEFAULT, ?, ?, ?) -- PARAMETERS: ["author-1","name-1",1]
+query: INSERT INTO `book`(`id`, `author`, `name`, `technical_index`) VALUES (DEFAULT, ?, ?, ?) -- PARAMETERS: ["author-2","name-2",2]
+query: COMMIT
+Books saved
+query: START TRANSACTION
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [0,0,0,1]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [2,1,1,1]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [4,2,2,1]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [0,0,0,2]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [2,1,1,2]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [4,2,2,2]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [0,0,0,3]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [2,1,1,3]
+query: INSERT INTO `page`(`id`, `nb_words`, `page_number`, `technical_index`, `bookId`) VALUES (DEFAULT, ?, ?, ?, ?) -- PARAMETERS: [4,2,2,3]
+query: COMMIT
+Pages saved
+query: SELECT `book`.`id` AS `book_id`, `book`.`author` AS `book_author`, `book`.`name` AS `book_name`, `book`.`technical_index` AS `book_technical_index`, `page`.`id` AS `page_id`, `page`.`nb_words` AS `page_nb_words`, `page`.`page_number` AS `page_page_number`, `page`.`technical_index` AS `page_technical_index`, `page`.`bookId` AS `page_bookId` FROM `book` `book` LEFT JOIN `page` `page` ON `book`.`id` = page.bookid
+Get books
+Switching pages from books
+query: START TRANSACTION
+Try to save
+query: SELECT `Page`.`id` AS `Page_id`, `Page`.`nb_words` AS `Page_nb_words`, `Page`.`page_number` AS `Page_page_number`, `Page`.`technical_index` AS `Page_technical_index`, `Page`.`bookId` AS `Page_bookId` FROM `page` `Page` WHERE `Page`.`id` IN (?, ?) -- PARAMETERS: [1,4]
+query: UPDATE `page` SET `bookId` = ? WHERE `id` IN (?) -- PARAMETERS: [2,1]
+query: UPDATE `page` SET `bookId` = ? WHERE `id` IN (?) -- PARAMETERS: [1,4]
+Saved
+query: COMMIT
+```
+
 This will works. Then clear the database.
 
 ### With history
