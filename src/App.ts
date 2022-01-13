@@ -52,8 +52,8 @@ export class App {
         const secondBook = books.find((b) => b.technical_index === 1);
         const secondPage: Page = secondBook.pages[0];
 
-        firstPage.book = secondBook;
-        secondPage.book = firstBook;
+        firstPage.book = Book.create(secondBook);
+        secondPage.book = Book.create(firstBook);
 
         console.log("Switching pages from books");
 
